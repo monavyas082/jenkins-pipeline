@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    stages {
+        stage ('pull code') {
+            steps {
+                sh 'ls'
+                git branch: 'J2EE', credentialsId: 'httpcred', url: 'https://github.com/shashirajraja/onlinebookstore.git'
+                
+            }
+        }
+        
+	stage ('build code') {
+            steps {
+                sh 'echo "build code successfully"'
+                sh 'sudo apt-get install maven -y'
+                sh 'mvn clean'
+                sh 'mvn package'
+                
+            }
+        }
+        stage ('test code') {
+
+            steps {
+                //sh 'mvn clean verify sonar:sonar -Dsonar.projectkey=test-code-01_test-project-01 -Dsonar.organization=test-code-01 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=c709dc9fbc9bbe4bc9dbaba232289e5aa17f1091'
+                //sh 'mvn clean verify sonar:sonar -Dsonar.projectkey=onlinebookstore -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=sqa_9edb54f6fd3007805e9b2a3664241d6b07a3cd2b
+                withSonarQubeEnv('sonarqube 2.16.1')
+                sh 'mvn "sonar:sonar"'
+                sh 'echo "test code successfully"'
+            }
+        }
+        stage ('deploy code') {
+
+            steps {
+                //deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://54.173.126.105:8080')], contextPath: '/', war: '**/*.war'
+                sh 'echo "deploy code successfully"'
+            }
+        }
+    }
+}
+     
+
+

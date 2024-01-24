@@ -1,0 +1,3 @@
+https://www.jenkins.io/blog/2022/12/27/run-jenkins-agent-as-a-service/#:~:text=Nodes%20are%20the%20%22machines%22%20on,is%20assumed%20to%20be%20unreliable.
+
+

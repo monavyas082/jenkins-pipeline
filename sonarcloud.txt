@@ -1,0 +1,37 @@
+test stage using sonarcloud
+
+
+git branch: 'J2EE', credentialsId: 'httpcred', url: 'https://github.com/shashirajraja/onlinebookstore.git'
+
+mvn clean verify sonar:sonar -Dsonar.projectkey=test-code-01_test-project-01 -Dsonar.organization=test-code-01 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=c709dc9fbc9bbe4bc9dbaba232289e5aa17f1091
+
+
+test-code-01  --org-key
+
+test-code-01_test-project-01   project-key
+
+c709dc9fbc9bbe4bc9dbaba232289e5aa17f1091    token
+
+=================================
+sonarcube installation
+
+sudo apt install fontconfig openjdk-11-jre -y  
+
+apt install openjdk-17-jdk openjdk-17-jre -y
+
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.0.1.46107.zip
+
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip
+sudo unzip sonarqube-9.8.0.63668.zip
+sudo mv sonarqube-9.8.0.63668 /opt/sonarqube
+sudo groupadd sonar
+sudo useradd -d /opt/sonarqube -g sonar sonar
+sudo chown sonar:sonar /opt/sonarqube -R
+                
+sonarcube --token
+sqa_9edb54f6fd3007805e9b2a3664241d6b07a3cd2b
+
+onlinebookstore   --projectkey
+
+
+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  PAT for jenkins2
